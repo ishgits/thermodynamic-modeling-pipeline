@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17445312.svg)](https://doi.org/10.5281/zenodo.17445312)
+
 # thermodynamic-modeling-pipeline
 Computational workflow for modeling amino acid formation in Titan’s Selk crater melt pools. Combines Gibbs free energy estimation, polynomial thermodynamic fits, and Cantera equilibrium simulations to study prebiotic chemistry relevant to astrobiology and the Dragonfly mission. Reproducibility dataset archived on Zenodo.
 
