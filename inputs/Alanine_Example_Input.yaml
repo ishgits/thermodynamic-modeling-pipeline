@@ -1,0 +1,96 @@
+# YAML file for aqueous model with species data, using NASA polynomials computed coefficients
+
+units:
+  length: cm
+  quantity: mol
+  activation-energy: cal/mol
+  energy: J
+  mass: g
+  pressure: Pa
+  temperature: K
+  time: s
+
+phases:
+- name: aqueous
+  thermo: ideal-condensed
+  species:
+    - HCN(aq)
+    - NH3(aq)
+    - H2O(l)
+    - C2H2(aq)
+    - Alanine(aq)
+    
+species:
+# Aqueous HCN
+- name: HCN(aq)
+  composition: {H: 1, C: 1, N: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 23.9  # cm^3/mol (approximate value)
+
+# Aqueous NH3
+- name: NH3(aq)
+  composition: {N: 1, H: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 24.5  # cm^3/mol (approximate value)
+
+# Liquid Water
+- name: H2O(l)
+  composition: {H: 2, O: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 18.015  # cm^3/mol
+
+# Aqueous acetylene
+- name: C2H2(aq)
+  composition: {C: 2, H: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 26.038  # cm^3/mol (approximate value)
+
+# Aqueous Alanine
+- name: Alanine(aq)
+  composition: {C: 3, H: 7, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 89.09  # cm^3/mol (approximate value)
+
+
+
+

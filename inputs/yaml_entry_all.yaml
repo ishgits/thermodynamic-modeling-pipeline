@@ -1,0 +1,484 @@
+# ==============================================================================
+# SPECIES DATA (NASA9 Thermo, aqueous + liquid species)
+# ==============================================================================
+# How to use this file
+# - NASA9 polynomial coefficients are intentionally LEFT BLANK because fits can
+#   vary slightly each time you run them (e.g., seeding/initialization/constraints).
+# - To run simulations:
+#     1) Execute your 'Polynomial_Fitting' code to fit NASA9 coefficients from
+#        your Gibbs energy vs T CSVs.
+#     2) For each species below, paste the two sets of 9 coefficients into the
+#        "data:" field as:
+#           data:
+#             - [a1, a2, a3, a4, a5, a6, a7, a8, a9]  # low-T
+#             - [a1, a2, a3, a4, a5, a6, a7, a8, a9]  # high-T
+# - Keep temperature ranges and reference pressure as provided (unless your fit
+#   requires a different split).
+# - Units:
+#     • Composition: atom counts
+#     • Reference pressure: Pa
+#     • Molar volume: cm^3/mol (approximate, for EOS)
+# ==============================================================================
+
+# OTHER MOLECULES (FOR VALIDATION + FURTHER TESTS)
+
+#Aqueous acrylonitrile
+- name: Acrylonitrile(aq)
+  composition: {C: 3, H: 3, N: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - [-6.701587e+02, 7.571307e+03, -1.024229e+02, 5.505290e-01, -1.469265e-03, 1.946994e-06, -1.024946e-09, 2.016571e+03, 5.217638e+02]
+    - [-2.837757e+01, -1.583827e+01, 2.511124e+02, -1.760753e+00, 4.623695e-03, -5.388508e-06, 2.351478e-09, 9.527173e+02, -1.043583e+03]
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 53.06  # cm^3/mol (approximate value)
+
+# Aqueous Ethanamine
+- name: Ethanamine(aq)
+  # NOTE: composition corrected to ethylamine: {C: 2, H: 7, N: 1}
+  composition: {C: 2, H: 7, N: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 45.08  # cm^3/mol (approximate value)
+
+# Aqueous 2-aminopropanenitrile
+- name: 2AH(aq)
+  composition: {C: 3, N: 2, H: 6}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 70.09  # cm^3/mol (approximate value)
+
+# Aqueous aminoacetonitrile
+- name: AAH(aq)
+  composition: {C: 2, N: 2, H: 4}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 56.07  # cm^3/mol (approximate value)
+
+# Adenine
+- name: Adenine(aq)
+  composition: {C: 5, N: 5, H: 5}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 135.13  # cm^3/mol (approximate value)
+
+# Aqueous Formaldehyde
+- name: CH2O(aq)
+  composition: {C: 1, H: 2, O: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 40.6  # cm^3/mol (approximate value)
+
+# Cytosine
+- name: Cytosine(aq)
+  composition: {C: 4, N: 3, H: 5, O: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 111.10  # cm^3/mol (approximate value)
+
+# Guanine
+- name: Guanine(aq)
+  composition: {C: 5, N: 5, H: 5, O: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+  reference-pressure: 101325
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 151.13  # cm^3/mol (approximate value)
+
+# Aqueous H2
+- name: H2(aq)
+  composition: {H: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 22.42  # cm^3/mol (approximate value)
+
+### MAIN MODELS DATA BELOW THIS ###
+# REACTANTS DATA
+
+# Aqueous HCN
+- name: HCN(aq)
+  composition: {H: 1, C: 1, N: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 23.9  # cm^3/mol (approximate value)
+
+# Aqueous acetylene
+- name: C2H2(aq)
+  composition: {C: 2, H: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 26.038  # cm^3/mol (approximate value)
+
+# Liquid Water
+- name: H2O(l)
+  composition: {H: 2, O: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 18.015  # cm^3/mol
+
+# Aqueous NH3
+- name: NH3(aq)
+  composition: {N: 1, H: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 24.5  # cm^3/mol (approximate value)
+
+# AMINO ACIDS DATA
+
+- name: Beta-alanine(aq)
+  composition: {C: 3, H: 7, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 89.09  # cm^3/mol (approximate value)
+
+- name: Glycine(aq)
+  composition: {C: 2, H: 5, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 75.07  # cm^3/mol (approximate value)
+
+- name: Alanine(aq)
+  composition: {C: 3, H: 7, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 89.09  # cm^3/mol (approximate value)
+
+- name: Arginine(aq)
+  composition: {C: 6, H: 14, N: 4, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 174.20  # cm^3/mol (approximate value)
+
+- name: Asparagine(aq)
+  composition: {C: 4, H: 8, N: 2, O: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 132.12  # cm^3/mol (approximate value)
+
+- name: Aspartic acid(aq)
+  composition: {C: 4, H: 7, N: 1, O: 4}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 133.10  # cm^3/mol (approximate value)
+
+- name: Cysteine(aq)
+  composition: {C: 3, H: 7, N: 1, O: 2, S: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 121.16  # cm^3/mol (approximate value)
+
+- name: Glutamic acid(aq)
+  composition: {C: 5, H: 9, N: 1, O: 4}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 147.13  # cm^3/mol (approximate value)
+
+- name: Glutamine(aq)
+  composition: {C: 5, H: 10, N: 2, O: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 146.15  # cm^3/mol (approximate value)
+
+- name: Histidine(aq)
+  composition: {C: 6, H: 9, N: 3, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 155.15  # cm^3/mol (approximate value)
+
+- name: Isoleucine(aq)
+  composition: {C: 6, H: 13, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 131.17  # cm^3/mol (approximate value)
+
+- name: Leucine(aq)
+  composition: {C: 6, H: 13, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 131.17  # cm^3/mol (approximate value)
+
+- name: Lysine(aq)
+  composition: {C: 6, H: 14, N: 2, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 146.19  # cm^3/mol (approximate value)
+
+- name: Methionine(aq)
+  composition: {C: 5, H: 11, N: 1, O: 2, S: 1}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 149.21  # cm^3/mol (approximate value)
+
+- name: Phenylalanine(aq)
+  composition: {C: 9, H: 11, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 165.19  # cm^3/mol (approximate value)
+
+- name: Proline(aq)
+  composition: {C: 5, H: 9, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 115.13  # cm^3/mol (approximate value)
+
+- name: Serine(aq)
+  composition: {C: 3, H: 7, N: 1, O: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 105.09  # cm^3/mol (approximate value)
+
+- name: Threonine(aq)
+  composition: {C: 4, H: 9, N: 1, O: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 119.12  # cm^3/mol (approximate value)
+
+- name: Tryptophan(aq)
+  composition: {C: 11, H: 12, N: 2, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 204.23  # cm^3/mol (approximate value)
+
+- name: Tyrosine(aq)
+  composition: {C: 9, H: 11, N: 1, O: 3}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 181.19  # cm^3/mol (approximate value)
+
+- name: Valine(aq)
+  composition: {C: 5, H: 11, N: 1, O: 2}
+  thermo:
+    model: NASA9
+    temperature-ranges: [273.16, 500, 643.15]
+    reference-pressure: 101325.0
+    data:
+    - []  # low-T coefficients
+    - []  # high-T coefficients
+  equation-of-state:
+    model: constant-volume
+    molar-volume: 117.15  # cm^3/mol (approximate value)
