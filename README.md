@@ -16,3 +16,9 @@ inputs/
 
 scripts/
     Gibbs free energy estimation tools
+
+## Citation
+
+If you use this workflow or any part of the dataset in your research, please cite:
+
+Madan, I. (2025). Dataset for *"Prebiotic Chemistry Insights for Dragonfly: Thermodynamics of amino acid synthesis in Selk crater on Titan"* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17445312
